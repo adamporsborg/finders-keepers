@@ -1,0 +1,251 @@
+{
+  "hunt": {
+    "offer": "AI automation & AI services for small businesses",
+    "location": "Las Vegas, NV",
+    "ranBy": "Claude Code (Bird Dog engine)",
+    "source": "Live web research — search + site reads",
+    "ranAt": "2026-06-28"
+  },
+  "prospects": [
+    {
+      "id": "live-adtack",
+      "name": "Mike Watkins",
+      "title": "President & Founder",
+      "company": "ADTACK Creative",
+      "photo": "",
+      "location": "Las Vegas, NV",
+      "industry": "Marketing / advertising agency",
+      "size": "HubSpot-certified agency",
+      "fitScore": 95,
+      "reason": "Bullseye — owns the agency, preaches ROI/SQLs over vanity metrics. Already sells accountability; AI is a natural force-multiplier for him.",
+      "phone": "(702) 270-8772",
+      "frontDesk": "(702) 270-8772",
+      "email": "info@adtack.com",
+      "emailPattern": "first@adtack.com",
+      "_hook": "preaches ROI over vanity metrics — 1M+ leads generated",
+      "channels": { "phoneStatus": "direct", "emailStatus": "inferred", "emailConfidence": 80, "linkedin": true, "instagram": true, "facebook": true, "x": false, "sms": false },
+      "socials": { "linkedin": "linkedin.com/company/adtack-creative", "instagram": "@adtackcreative", "facebook": "fb.com/adtackcreative", "x": "@adtack", "website": "adtack.com" },
+      "signals": [
+        "Site pitches 'real SQLs & close-rates, not impressions' — values measurable ROI",
+        "Claims 1M+ leads generated — runs at volume, feels reporting pain",
+        "HubSpot-certified partner — already invests in marketing tooling"
+      ],
+      "lifeEvent": "Site emphasizes ROI accountability over vanity metrics (1M+ leads generated)",
+      "coworkers": [],
+      "outreach": {
+        "angle": "He already sells accountability over impressions. Position AI as scaling his lead-gen + client reporting without adding headcount.",
+        "bestChannel": "Call",
+        "opener": "Hey Mike — saw ADTACK pitches real SQLs and close-rates over vanity metrics. I help agencies like yours automate reporting + lead qualification with AI so your team spends time on strategy, not spreadsheets. Worth 10 minutes?",
+        "dm": "Mike — genuinely respect that ADTACK leads with ROI, not impressions. I help agencies bolt AI onto exactly that. Cool if I send one idea?",
+        "voicemail": "Hi Mike, it's {you} — quick one about ADTACK's reporting workflow. I'll text so it's not another voicemail. Talk soon.",
+        "followups": [
+          { "day": "Day 0", "text": "Call: opener above. Reference the 'real SQLs over vanity metrics' line from their site." },
+          { "day": "Day 2", "text": "Email: 1 example of an agency that cut reporting time 60% with AI. No ask." },
+          { "day": "Day 5", "text": "Soft nudge: 'Should I close your file or is timing just off?'" },
+          { "day": "Day 9", "text": "Break-up note + door open." }
+        ]
+      },
+      "unlocked": true
+    },
+    {
+      "id": "live-twenty8",
+      "name": "Twenty8 Marketing",
+      "title": "Ask for: Owner / Marketing Lead",
+      "company": "Twenty8 Marketing",
+      "photo": "",
+      "location": "Las Vegas, NV",
+      "industry": "Digital marketing agency (local SEO)",
+      "size": "Boutique agency",
+      "fitScore": 90,
+      "reason": "Strong fit — specializes in Google Maps 'Pack 3' local SEO for service businesses; AI can scale their audits and client outreach.",
+      "phone": "(702) 952-9595",
+      "frontDesk": "(702) 952-9595",
+      "email": "Hello@twenty8marketing.com",
+      "emailPattern": "first@twenty8marketing.com",
+      "_hook": "specializes in Google Maps Pack-3 local SEO",
+      "channels": { "phoneStatus": "direct", "emailStatus": "verified", "emailConfidence": 99, "linkedin": true, "instagram": true, "facebook": true, "x": false, "sms": false },
+      "socials": { "linkedin": "linkedin.com/company/twenty8marketing", "instagram": "@twenty8marketing", "facebook": "fb.com/twenty8marketing", "x": "@twenty8", "website": "twenty8marketing.com" },
+      "signals": [
+        "Verified email on site (Hello@twenty8marketing.com) — easy to reach",
+        "Niche: Google Maps Pack-3 ranking for local service businesses",
+        "Located 9550 S Eastern Ave — established office"
+      ],
+      "lifeEvent": "Specializes in 'Pack 3' Google Maps optimization for Las Vegas Valley service businesses",
+      "coworkers": [],
+      "outreach": {
+        "angle": "They sell local-SEO results. AI can automate their audits, review-response, and reporting so they handle more clients per head.",
+        "bestChannel": "Email",
+        "opener": "Hi — saw Twenty8 specializes in getting local businesses into the Google Maps top 3. I help agencies automate the audit + review-response grind with AI so you can take on more clients without more staff. Worth a quick look?",
+        "dm": "Love the Pack-3 focus at Twenty8. I help local-SEO agencies automate the repetitive parts with AI — can I send one idea?",
+        "voicemail": "Hi, it's {you} — quick one about scaling Twenty8's local-SEO ops with AI. I'll email the details. Thanks!",
+        "followups": [
+          { "day": "Day 0", "text": "Email Hello@twenty8marketing.com — opener above." },
+          { "day": "Day 2", "text": "Send a 60-sec Loom auditing a sample GMB with AI." },
+          { "day": "Day 5", "text": "Nudge + offer a free pilot audit." },
+          { "day": "Day 9", "text": "Break-up note." }
+        ]
+      },
+      "unlocked": true
+    },
+    {
+      "id": "live-robertson",
+      "name": "Robertson + Partners",
+      "title": "Ask for: Founder / Principal",
+      "company": "Robertson + Partners",
+      "photo": "",
+      "location": "Las Vegas, NV",
+      "industry": "Advertising / creative agency",
+      "size": "Full-service agency",
+      "fitScore": 88,
+      "reason": "Strong fit — creative-led agency ('ideas worth advertising'); AI removes production grunt-work so the team stays on ideas.",
+      "phone": "(702) 947-7777",
+      "frontDesk": "(702) 947-7777",
+      "email": "info@robertson.partners",
+      "emailPattern": "first@robertson.partners",
+      "_hook": "philosophy: 'less advertising, more ideas worth advertising'",
+      "channels": { "phoneStatus": "direct", "emailStatus": "verified", "emailConfidence": 95, "linkedin": true, "instagram": true, "facebook": false, "x": false, "sms": false },
+      "socials": { "linkedin": "linkedin.com/company/robertson-partners", "instagram": "@robertsonpartners", "facebook": "", "x": "", "website": "robertson.partners" },
+      "signals": [
+        "Verified email on site (info@robertson.partners)",
+        "Creative-first positioning — 'ideas worth advertising'",
+        "Office at 6061 S Fort Apache Rd — established"
+      ],
+      "lifeEvent": "Brand philosophy: 'the world needs less advertising and more ideas worth advertising'",
+      "coworkers": [],
+      "outreach": {
+        "angle": "They value ideas over volume. Pitch AI as handling the grunt work (research, first drafts, production) so their people spend more time on the ideas.",
+        "bestChannel": "Email",
+        "opener": "Hi — Robertson + Partners' 'ideas worth advertising' line stuck with me. I help creative shops use AI for the grunt work (research, first drafts, versioning) so your team stays on the ideas. Worth 10 minutes?",
+        "dm": "That 'ideas worth advertising' philosophy is great. I help creative agencies free up time with AI for exactly that — can I share one idea?",
+        "voicemail": "Hi, it's {you} — quick one about freeing your creatives from grunt work with AI. I'll email details.",
+        "followups": [
+          { "day": "Day 0", "text": "Email info@robertson.partners — opener above." },
+          { "day": "Day 2", "text": "Share a creative-agency AI workflow example." },
+          { "day": "Day 5", "text": "Nudge." },
+          { "day": "Day 9", "text": "Break-up note." }
+        ]
+      },
+      "unlocked": true
+    },
+    {
+      "id": "live-noble",
+      "name": "Noble Studios",
+      "title": "Ask for: Founder / Managing Director",
+      "company": "Noble Studios",
+      "photo": "",
+      "location": "Las Vegas, NV",
+      "industry": "Brand & digital marketing agency",
+      "size": "Established studio",
+      "fitScore": 84,
+      "reason": "Solid fit — established brand+digital studio with a Vegas office; good candidate for AI-augmented production and analytics.",
+      "phone": "(702) 830-1762",
+      "frontDesk": "(702) 830-1762",
+      "email": "info@noblestudios.com",
+      "emailPattern": "first@noblestudios.com",
+      "_hook": "brand + digital studio with a downtown Vegas office",
+      "channels": { "phoneStatus": "direct", "emailStatus": "inferred", "emailConfidence": 78, "linkedin": true, "instagram": true, "facebook": true, "x": false, "sms": false },
+      "socials": { "linkedin": "linkedin.com/company/noble-studios", "instagram": "@noblestudios", "facebook": "fb.com/noblestudios", "x": "", "website": "noblestudios.com" },
+      "signals": [
+        "Downtown office at 818 Stewart Ave — established presence",
+        "Brand + digital full-service — multiple AI insertion points",
+        "Direct line listed: (702) 830-1762"
+      ],
+      "lifeEvent": "Maintains a Las Vegas office (818 Stewart Ave) plus other markets — multi-location agency",
+      "coworkers": [],
+      "outreach": {
+        "angle": "Multi-service studio = lots of repetitive production. Pitch AI for content production speed + analytics.",
+        "bestChannel": "Call",
+        "opener": "Hey — saw Noble Studios runs brand + digital out of your Stewart Ave office. I help studios speed up content production and reporting with AI without losing craft. Worth 10 minutes?",
+        "dm": "Noble's brand + digital work is sharp. I help studios add AI to production without losing quality — can I send one idea?",
+        "voicemail": "Hi, it's {you} — quick one about AI-assisted production for Noble. I'll follow with an email.",
+        "followups": [
+          { "day": "Day 0", "text": "Call (702) 830-1762 — ask for the founder/MD." },
+          { "day": "Day 2", "text": "Email a production-speed case study." },
+          { "day": "Day 5", "text": "Nudge." },
+          { "day": "Day 9", "text": "Break-up note." }
+        ]
+      },
+      "unlocked": true
+    },
+    {
+      "id": "live-thrive",
+      "name": "Thrive Agency (Las Vegas)",
+      "title": "Ask for: Local Office Lead",
+      "company": "Thrive Agency",
+      "photo": "",
+      "location": "Las Vegas, NV",
+      "industry": "Full-service digital marketing",
+      "size": "Multi-market agency",
+      "fitScore": 80,
+      "reason": "Solid fit — full-service SEO/PPC/web/social; high-volume delivery org with clear automation upside.",
+      "phone": "(702) 819-6444",
+      "frontDesk": "(702) 819-6444",
+      "email": "info@thriveagency.com",
+      "emailPattern": "first@thriveagency.com",
+      "_hook": "full-service SEO, web, social, PPC at scale",
+      "channels": { "phoneStatus": "direct", "emailStatus": "inferred", "emailConfidence": 75, "linkedin": true, "instagram": false, "facebook": true, "x": false, "sms": false },
+      "socials": { "linkedin": "linkedin.com/company/thrive-internet-marketing-agency", "instagram": "", "facebook": "fb.com/thriveagency", "x": "", "website": "thriveagency.com" },
+      "signals": [
+        "Full-service (SEO/PPC/web/social) — high repetitive workload",
+        "Multi-market delivery — automation scales across teams",
+        "Direct line listed"
+      ],
+      "lifeEvent": "Runs full-service SEO/PPC/web/social — high-volume delivery shop",
+      "coworkers": [],
+      "outreach": {
+        "angle": "Volume delivery shop — AI for reporting, audits, and content drafts saves real labor.",
+        "bestChannel": "Email",
+        "opener": "Hi — Thrive's full-service delivery is exactly where AI saves the most labor (reporting, audits, drafts). I help agencies automate the repetitive 30%. Worth a look?",
+        "dm": "Thrive's full-service model is perfect for AI on the repetitive work — can I send an idea?",
+        "voicemail": "Hi, it's {you} — quick one about cutting Thrive's reporting/audit labor with AI. Emailing details.",
+        "followups": [
+          { "day": "Day 0", "text": "Email info@thriveagency.com — opener above." },
+          { "day": "Day 2", "text": "Send reporting-automation example." },
+          { "day": "Day 5", "text": "Nudge." },
+          { "day": "Day 9", "text": "Break-up note." }
+        ]
+      },
+      "unlocked": true
+    },
+    {
+      "id": "live-vegasmktg",
+      "name": "Vegas Marketing",
+      "title": "Ask for: Owner",
+      "company": "Vegas Marketing",
+      "photo": "",
+      "location": "Las Vegas, NV",
+      "industry": "SEO & web design agency",
+      "size": "Local agency",
+      "fitScore": 78,
+      "reason": "Solid fit — local SEO/web shop; warm them up, then pitch AI for audits and content.",
+      "phone": "(725) 500-8536",
+      "frontDesk": "(725) 500-8536",
+      "email": "info@vegas.marketing",
+      "emailPattern": "first@vegas.marketing",
+      "_hook": "positions as Vegas' #1 SEO & web design shop",
+      "channels": { "phoneStatus": "direct", "emailStatus": "inferred", "emailConfidence": 72, "linkedin": true, "instagram": true, "facebook": false, "x": false, "sms": false },
+      "socials": { "linkedin": "linkedin.com/company/vegas-marketing", "instagram": "@vegasmarketing", "facebook": "", "x": "", "website": "vegas.marketing" },
+      "signals": [
+        "SEO + web design focus — clear AI automation fit",
+        "Local Vegas shop — owner-operated, fast decisions",
+        "Direct line listed"
+      ],
+      "lifeEvent": "Positions itself as Las Vegas' #1 SEO & digital marketing agency",
+      "coworkers": [],
+      "outreach": {
+        "angle": "Owner-operated SEO shop — fast decisions. Lead with a free AI audit of one of their client sites.",
+        "bestChannel": "Call",
+        "opener": "Hey — saw Vegas Marketing does SEO + web design. I help local shops use AI to run audits and content faster. Happy to run a free AI audit on one of your sites — worth 10 minutes?",
+        "dm": "Vegas Marketing's SEO work looks solid — I help shops like yours speed it up with AI. Can I send a free sample audit?",
+        "voicemail": "Hi, it's {you} — quick one, I'll run a free AI audit for Vegas Marketing. Texting you.",
+        "followups": [
+          { "day": "Day 0", "text": "Call (725) 500-8536 — offer free AI audit." },
+          { "day": "Day 2", "text": "Send the audit." },
+          { "day": "Day 5", "text": "Nudge." },
+          { "day": "Day 9", "text": "Break-up note." }
+        ]
+      },
+      "unlocked": true
+    }
+  ]
+}

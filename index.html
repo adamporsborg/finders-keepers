@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finders Keepers — your AI sales manager</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐕</text></svg>" />
+</head>
+<body>
+  <div class="app">
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-row">
+          <div class="brand-mark">🐕</div>
+          <div>
+            <div class="brand-name">Finders <b>Keepers</b></div>
+            <div class="brand-tag">finders keepers. losers weepers.</div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="nav" id="nav">
+        <button class="nav-item" data-view="today"><span class="nav-ico">☀️</span> Today<span class="nav-badge" id="navToday"></span></button>
+        <button class="nav-item" data-view="find"><span class="nav-ico">🐕</span> Find prospects</button>
+        <button class="nav-item" data-view="pipeline"><span class="nav-ico">▦</span> Pipeline<span class="nav-badge" id="navPipe"></span></button>
+      </nav>
+
+      <div class="side-context" id="sideContext"></div>
+
+      <div class="sidebar-foot">
+        <div class="credits">
+          <div class="credits-top">
+            <span class="credits-label">Bird Dog credits</span>
+            <span class="credits-val" id="creditsVal">200<small>/200</small></span>
+          </div>
+          <div class="credits-bar"><i id="creditsBar" style="width:100%"></i></div>
+          <div class="credits-sub">Free trial · 6 days left · <a href="#" id="upgradeLink">Upgrade</a> · <a href="#" id="resetDemo">Reset</a></div>
+        </div>
+        <div class="user">
+          <div class="avatar" id="userAva">AP</div>
+          <div>
+            <div class="user-name" id="userName">Adam Porsborg</div>
+            <div class="user-plan" id="userPlan">Unser Media</div>
+          </div>
+          <span class="trial-pill">TRIAL</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ============ MAIN ============ -->
+    <main class="main">
+      <div class="topbar">
+        <div class="topbar-title" id="topTitle">Today<span id="topSub">Your daily briefing</span></div>
+        <div class="topbar-actions" id="topActions"></div>
+      </div>
+      <div class="view-host" id="viewHost"><!-- active view injected --></div>
+    </main>
+  </div>
+
+  <!-- ============ ONBOARDING ============ -->
+  <div class="onb-scrim" id="onbScrim"></div>
+
+  <!-- ============ DRAWER ============ -->
+  <div class="scrim" id="scrim"></div>
+  <aside class="drawer" id="drawer"></aside>
+
+  <!-- ============ MODAL ============ -->
+  <div class="modal-scrim" id="modalScrim"></div>
+
+  <!-- ============ TOASTS ============ -->
+  <div class="toast-wrap" id="toasts"></div>
+
+  <script src="engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+*.log
+
+# secrets — NEVER commit API keys
+.env
+.env.*
+*.key
+secrets.json
+
+# editor
+.vscode/
+.idea/
+
+# Note: data/prospects.json holds only public business listings (safe to commit
+# as a demo). If you'd rather keep your real working pipeline private, uncomment:
+# data/prospects.json
