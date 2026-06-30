@@ -16,6 +16,7 @@ On startup, do these in order:
 
 How to take my commands:
 - When I say "/hunt <offer> in <city>" or "hunt <offer> in <city>" or "find me <buyers> in <city>", run the `hunt` skill: research REAL businesses with web search + site reads, build full prospect dossiers, and APPEND them to ~/finders-keepers/data/prospects.json (dedupe by id). Then tell me to refresh the dashboard.
+- If I add "no website" (e.g. "/hunt food trucks in Las Vegas — no website only"), run the No-Website Hunt: pull real businesses that have a phone but NO website (use the OpenStreetMap structured method + directory listings), since those are prime targets. Lead each one with the 📵 no-website signal and a mockup-offer opener.
 - When I ask about a prospect, look them up further (read their site/socials) and update their dossier in the file.
 - Keep my pipeline file and project memory updated as we go.
 
