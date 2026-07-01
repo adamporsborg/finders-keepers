@@ -53,26 +53,66 @@ function load() {
   } catch (e) {}
 }
 
-/* ---------------- live data (real hunts written by Claude Code) ---------------- */
-async function loadLiveData() {
+/* ---------------- live data (real hunts written by Bird Dog / Claude Code) ----------------
+   Real research lands here as a REVIEW QUEUE — candidates you approve into the pipeline,
+   NOT auto-dumped. The file is polled, so new finds appear within seconds. */
+const LIVE_HUNT_ID = 'live-hunt';
+async function loadLiveData(opts = {}) {
   try {
     const res = await fetch('data/prospects.json', { cache: 'no-store' });
     if (!res.ok) return;
     const data = await res.json();
     if (!data.prospects || !data.prospects.length) return;
-    let added = 0;
-    for (const p of data.prospects) {
-      if (state.pipeline.some(x => x.id === p.id)) continue;
-      state.pipeline.unshift({ ...p, stage: 'targets', notes: [], reminder: null, touches: [], lastTouch: null, addedTs: Date.now(), live: true });
-      added++;
-    }
-    if (added) {
-      save(); refreshBadges(); renderSideContext();
-      if (state.view === 'today') renderToday();
-      if (state.view === 'pipeline') renderPipeline();
-      toast('🐕', `Loaded <b>${added}</b> real prospects from Bird Dog's last hunt${data.hunt?.location ? ' · ' + esc(data.hunt.location) : ''}.`);
+
+    // signature = only rebuild the queue when the file actually changed
+    const sig = (data.hunt?.ranAt || '') + '|' + data.prospects.map(p => p.id).join(',');
+    if (sig === state._liveSig) return;
+    const firstLoad = !state._liveSig;
+    state._liveSig = sig;
+
+    // count candidates not already in the pipeline
+    const fresh = data.prospects.filter(p => !state.pipeline.some(x => x.id === p.id));
+
+    // build / replace the live review hunt
+    let h = state.hunts.find(x => x.id === LIVE_HUNT_ID);
+    const selected = h ? h.selected : new Set();
+    const offer = data.hunt?.offer || 'your offer';
+    h = {
+      id: LIVE_HUNT_ID, title: '🐕 ' + short(offer, 30), offer,
+      live: true, messages: [], brief: null,
+      prospects: data.prospects, selected, resultsMsgId: 'live-results',
+    };
+    const loc = data.hunt?.location ? ` in <b>${esc(data.hunt.location)}</b>` : '';
+    const noSite = data.prospects.filter(p => !(p.socials && p.socials.website)).length;
+    const tag = noSite === data.prospects.length && noSite > 0
+      ? `<b>${data.prospects.length}</b> real businesses with <b>no website</b>${loc} — prime targets.`
+      : `<b>${data.prospects.length}</b> real businesses${loc} I researched by hand.`;
+    h.messages = [
+      { role: 'user', text: offer },
+      { role: 'bot', id: 'live-intro', html:
+        `<p>Here's what I sniffed out — ${tag} Tick the ones you want and hit <b>Save to pipeline</b>. Click a name for the full dossier.</p>
+         <p class="live-note">🟢 Live feed from Bird Dog · last hunt ${esc(data.hunt?.ranAt || 'just now')}${noSite ? ` · 📵 ${noSite} with no website` : ''}</p>` },
+      { role: 'bot', id: 'live-results', html: resultsHTML(h) },
+    ];
+
+    // upsert into hunts list, keep it the active hunt
+    state.hunts = state.hunts.filter(x => x.id !== LIVE_HUNT_ID);
+    state.hunts.unshift(h);
+    state.activeHuntId = LIVE_HUNT_ID;
+
+    refreshBadges(); renderSideContext();
+    if (state.view === 'find') renderFind();
+
+    if (firstLoad && !opts.silent) {
+      toast('🐕', `Bird Dog found <b>${fresh.length}</b> ${fresh.length === 1 ? 'business' : 'businesses'} to review${noSite ? ` · 📵 ${noSite} no-website` : ''}. Open <b>Find prospects</b> to add them.`);
+    } else if (!firstLoad) {
+      toast('🐕', `New hunt in — <b>${fresh.length}</b> fresh ${fresh.length === 1 ? 'candidate' : 'candidates'} to review in <b>Find prospects</b>.`);
+      if (state.view === 'find') renderFind();
     }
   } catch (e) { /* no live file yet — demo mode */ }
+}
+function startLivePolling() {
+  setInterval(() => { loadLiveData({ silent: true }); }, 4000);
 }
 
 /* ---------------- credits ---------------- */
@@ -307,26 +347,20 @@ async function submit() {
   $('#input').value = ''; autosize(); $('#sendBtn').disabled = true;
   renderSideContext(); renderThreadOnly();
 
-  if (!spend(FK.config.creditsPerSearch, 'Hunt dispatched')) { pushBot(`<p>You're out of credits, partner. <strong>Top up</strong> and I'll get right back on the scent.</p>`); return; }
-  pushBot(`<p>On it. Let me read <strong>${esc(short(text))}</strong>, pull matching businesses from county records + the web, find the right person in each, and build their files. A few seconds — I check every lead by hand.</p>`);
-  await wait(500);
-
-  const brief = await FK.profileOffer(text, { location: state.profile.location });
-  h.brief = brief;
-  const logId = pushBot(worklogHTML(0));
-  for (let i = 0; i < FK.layers.length; i++) {
-    await wait(520 + Math.random() * 360);
-    const count = [null, null, FK._rand(180, 420), FK._rand(60, 140), FK._rand(40, 90), FK._rand(24, 50), null][i];
-    updateBot(logId, worklogHTML(i, count));
-  }
-  await wait(400); updateBot(logId, worklogHTML(FK.layers.length));
-
-  const prospects = await FK.hunt(text, brief, 24);
-  h.prospects = prospects;
-  renderSideContext(); refreshBadges();
-  pushBot(briefHTML(brief));
-  await wait(300);
-  h.resultsMsgId = pushBot(resultsHTML(h));
+  // Real hunts run through Bird Dog (your Claude Code session) — no fabricated data.
+  // Build the exact command to give Bird Dog and bridge it here.
+  const noSite = /no\s*-?\s*website|without a (web)?site|no site|off-grid/i.test(text);
+  const loc = state.profile.location ? ` in ${state.profile.location}` : ' in <your city>';
+  const offerClean = short(text.replace(/\s*[—-]?\s*no\s*-?\s*website.*$/i, '').trim(), 80);
+  const cmd = noSite
+    ? `/hunt ${offerClean}${loc} — no website only`
+    : `/hunt ${offerClean}${loc}`;
+  await wait(350);
+  pushBot(
+    `<p>On it. I run <strong>real</strong> hunts — live web + directory research, every lead checked by hand. ${noSite ? 'No-website mode: I\'ll pull businesses that have a phone but <b>no site</b> — your prime targets. ' : ''}Give me this command in your <b>Bird Dog</b> session and the results drop right here for review:</p>
+     <div class="cmd-bridge"><code id="bridgeCmd">${esc(cmd)}</code><button class="mini-copy" data-action="copy" data-copy="${esc(cmd)}">copy</button></div>
+     <p class="live-note">🟢 As soon as Bird Dog finishes, the candidates appear above with checkboxes — tick the ones you want, then <b>Save to pipeline</b>.</p>`
+  );
 }
 
 function worklogHTML(activeIdx, count) {
@@ -373,7 +407,7 @@ function discCardHTML(p) {
     <label class="disc-check" data-action="stop"><input type="checkbox" data-action="toggle-select" data-id="${p.id}" ${inPipe ? 'checked disabled' : (sel ? 'checked' : '')}></label>
     <div class="disc-body" data-action="open-prospect" data-id="${p.id}">
       <div class="disc-top">${avatarHTML(p, 38)}<div class="disc-id">
-        <div class="disc-name">${esc(p.name)} ${inPipe ? '<span class="inpipe-pill">in pipeline</span>' : ''}</div>
+        <div class="disc-name">${esc(p.name)} ${inPipe ? '<span class="inpipe-pill">in pipeline</span>' : ''}${!(p.socials && p.socials.website) ? '<span class="nosite-pill">📵 no website</span>' : ''}</div>
         <div class="disc-title">${esc(p.title)} · ${esc(p.company)}</div></div>
         <div class="mini-ring" style="--p:${p.fitScore}"><span>${p.fitScore}</span></div></div>
       <div class="disc-meta"><span>📍 ${esc(p.location)}</span><span>${channelDots(p)}</span></div>
@@ -790,7 +824,9 @@ function init() {
   if (!state.onboarded) { setView('today'); startOnboarding(); }
   else setView('today');
 
-  // pull in any real prospects Claude Code has researched into data/prospects.json
-  loadLiveData();
+  // Local (your machine): pull in real prospects Bird Dog researched + keep watching the file.
+  // Public demo host: skip it — visitors start clean and try their own (demo) hunt.
+  const isLocal = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) || location.protocol === 'file:';
+  if (isLocal) { loadLiveData(); startLivePolling(); }
 }
 document.addEventListener('DOMContentLoaded', init);
